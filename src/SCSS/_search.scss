@@ -1,0 +1,38 @@
+.form {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  &-input-group {
+    border: none;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    &-category {
+      background-color: #c48d3f;
+      color: #fffffe;
+      padding: 0.5rem;
+      /* top-left | top-right | bottom-right | bottom-left */
+      border-radius: 0.5rem;
+      border-width: 1px;
+      border-style: solid;
+    }
+    &-search {
+      padding: 0.5rem;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 0.5rem;
+    }
+  }
+
+  .btn {
+    background-color: #c48d3f;
+    color: #fffffe;
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,28 @@
+.display {
+  &-wrapper {
+    @include gridContainer;
+    padding: 1rem;
+  }
+  &-card {
+    padding: 2rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: bg-color(odd);
+    border: 1px solid #ccc;
+    border-bottom: 3px solid $accent-color;
+    &-image {
+      height: 5rem;
+      width: 5rem;
+    }
+    &-name {
+      align-self: center;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

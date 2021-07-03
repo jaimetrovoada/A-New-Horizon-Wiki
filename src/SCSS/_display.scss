@@ -10,19 +10,23 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: bg-color(odd);
-    border: 1px solid #ccc;
-    border-bottom: 3px solid $accent-color;
+    background-color: #eee6ce;
+    border-radius: 4rem;
+    border: 3px solid #eee6ce;
+
     &-image {
       height: 5rem;
       width: 5rem;
     }
+
     &-name {
       align-self: center;
+      color: #756852;
     }
 
     &:hover {
       cursor: pointer;
+      border-color: #dfd5af;
     }
   }
 }

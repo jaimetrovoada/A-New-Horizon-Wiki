@@ -24,9 +24,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #eff0f3;
-  border: 1px solid #ccc;
-  border-bottom: 3px solid #ff8e3c;
+  background-color: #eee6ce;
+  border-radius: 4rem;
+  border: 3px solid #eee6ce;
 }
 
 .display-card-image {
@@ -38,10 +38,12 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  color: #756852;
 }
 
 .display-card:hover {
   cursor: pointer;
+  border-color: #dfd5af;
 }
 
 .form-wrapper {
@@ -63,8 +65,8 @@
 }
 
 .form-input-group {
-  border: none;
   font-size: 2rem;
+  border: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -72,30 +74,141 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 1.5rem;
 }
 
+.form-input-group label {
+  margin-bottom: 0;
+  color: #756852;
+}
+
 .form-input-group-category {
-  background-color: #c48d3f;
-  color: #fffffe;
-  padding: 0.5rem;
-  /* top-left | top-right | bottom-right | bottom-left */
-  border-radius: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
+  background-color: #56bdac;
+  color: #f9f7e6;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 3px solid #56bdac;
+}
+
+.form-input-group-category:hover {
+  border: 3px solid #46e4d7;
+  color: #ffcb43;
 }
 
 .form-input-group-search {
+  outline: none;
   padding: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 0.5rem;
+  border: 1px solid #56bdac;
+  border-radius: 1rem;
+}
+
+.form-input-group-search::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+.form-input-group-search:-ms-input-placeholder {
+  color: #ccc;
+}
+
+.form-input-group-search::-ms-input-placeholder {
+  color: #ccc;
+}
+
+.form-input-group-search::placeholder {
+  color: #ccc;
 }
 
 .form .btn {
-  background-color: #c48d3f;
-  color: #fffffe;
   font-size: 2rem;
+  background-color: #56bdac;
+  color: #f9f7e6;
+  border: 3px solid #56bdac;
+  border-radius: 1rem;
+}
+
+.form .btn:hover {
+  border: 3px solid #46e4d7;
+  color: #ffcb43;
+}
+
+.form .info {
+  color: #756852;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-input-group {
+    font-size: 1.5rem;
+  }
+  .form-input-group-search {
+    width: 15rem;
+  }
+  .form-input-group .btn {
+    font-size: 1.5rem;
+  }
+}
+
+.modal-content {
+  border-radius: 3rem;
+  background-color: #f5f3e6;
+  color: #756852;
+}
+
+.modal-header {
+  color: #8a9f93;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  border-bottom: 0;
+  padding: 0.5rem 2rem;
+}
+
+.modal-header .modal-title {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.modal-body {
+  background-color: #e1efcc;
+  background: url("./images/ac-new-horizons-leaf-pattern-v2-1280x1024-1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  border-radius: 0 0 3rem 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 1rem 2rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.modal-body figure {
+  background-color: #f5f3e6;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.modal-body p {
+  padding: 10px;
+  margin: 0;
+}
+
+.modal-body p:not(:last-child) {
+  border-bottom: 2px solid #f5f3e6;
 }
 
 * {
@@ -103,6 +216,32 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+figure {
+  margin: 0;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #eee6ce;
+  /* border: 2px solid #eff1f5; */
 }
 
 body {
@@ -114,5 +253,32 @@ body {
   font-size: 16px;
   font-weight: 400;
   height: 100vh;
+  background-color: #f5f3e6;
+  overflow: overlay;
+}
+
+.App .wlcmScreen {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+  place-items: center;
+  background: url("./images/newhorizons_wallpaper_PromoArt.png") no-repeat center center fixed;
+  background-size: cover;
+  color: #756852;
+  font-size: 3rem;
+}
+
+.App button.btn {
+  color: #f9f7e6;
+  font-size: 2rem;
+  border-radius: 1rem;
+  background-color: #56bdac;
+  border: 3px solid #56bdac;
+}
+
+.App button.btn:hover {
+  color: #ffcb43;
+  border: 3px solid #46e4d7;
 }
 /*# sourceMappingURL=index.css.map */

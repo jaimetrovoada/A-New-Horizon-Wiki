@@ -1,0 +1,46 @@
+.modal {
+  &-content {
+    border-radius: 3rem;
+    background-color: #f5f3e6;
+    color: #756852;
+  }
+  &-header {
+    color: #8a9f93;
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 0;
+    padding: 0.5rem 2rem;
+    .modal-title {
+      align-self: center;
+    }
+    .close {
+    }
+  }
+  &-body {
+    background-color: #e1efcc;
+    background: url("./images/ac-new-horizons-leaf-pattern-v2-1280x1024-1.jpg")
+      no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 0 0 3rem 3rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 2rem;
+    justify-content: space-evenly;
+    figure {
+      background-color: #f5f3e6;
+      padding: 0.5rem;
+      border-radius: 2rem;
+      align-self: center;
+    }
+    p {
+      padding: 10px;
+      margin: 0;
+      &:not(:last-child) {
+        border-bottom: 2px solid #f5f3e6;
+      }
+    }
+  }
+}

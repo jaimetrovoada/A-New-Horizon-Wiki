@@ -1,13 +1,13 @@
 import React from "react";
 import { useState } from "react";
 
-const Form = ({ getCategory, setSelected, filter, data, setData }) => {
+const Form = ({ getCategory, setCategory, filter, data }) => {
   const [newSearch, setNewSearch] = useState("");
 
   //functions
   const getNewCategory = (e) => {
     console.log(e.target.value);
-    setSelected(e.target.value);
+    setCategory(e.target.value);
     getCategory(e.target.value);
   };
 
@@ -26,7 +26,7 @@ const Form = ({ getCategory, setSelected, filter, data, setData }) => {
     <section className="form">
       <form onSubmit={handleSubmit} className="form-wrapper">
         <fieldset className="form-input-group">
-          <label htmlFor="category">Select a category</label>
+          <label htmlFor="category">Category</label>
           <select
             name="category"
             id="category"
@@ -48,7 +48,7 @@ const Form = ({ getCategory, setSelected, filter, data, setData }) => {
         <fieldset className="form-input-group">
           <input
             type="text"
-            placeholder="Please Write your search"
+            placeholder="Filter"
             id="search"
             className="form-input-group-search"
             onChange={handleInput}
@@ -56,6 +56,9 @@ const Form = ({ getCategory, setSelected, filter, data, setData }) => {
           ></input>
           <input type="submit" value="Search" className="btn"></input>
         </fieldset>
+        <div className="info">
+          <span>Click on the icons to see more information</span>
+        </div>
       </form>
     </section>
   );

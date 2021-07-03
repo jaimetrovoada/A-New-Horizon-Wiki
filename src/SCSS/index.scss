@@ -1,9 +1,36 @@
-@import "./varaibles", "./display", "./search";
-
+@import "./varaibles", "./display", "./search", "./modal";
+// some resets
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+figure {
+  margin: 0;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+//styles
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #eee6ce;
+  /* border: 2px solid #eff1f5; */
 }
 
 body {
@@ -15,7 +42,35 @@ body {
   font-size: 16px;
   font-weight: 400;
   height: 100vh;
+  background-color: #f5f3e6;
+  overflow: overlay;
 }
 
 .App {
+  .wlcmScreen {
+    height: 100vh;
+    display: grid;
+    text-align: center;
+    place-items: center;
+    background: url("./images/newhorizons_wallpaper_PromoArt.png") no-repeat
+      center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #756852;
+    font-size: 3rem;
+  }
+
+  button.btn {
+    color: #f9f7e6;
+    font-size: 2rem;
+    border-radius: 1rem;
+    background-color: #56bdac;
+    border: 3px solid #56bdac;
+    &:hover {
+      color: #ffcb43;
+      border: 3px solid #46e4d7;
+    }
+  }
 }

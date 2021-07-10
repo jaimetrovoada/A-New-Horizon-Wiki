@@ -1,6 +1,7 @@
 import React from "react";
 import InfoModal from "./InfoModal";
 import { useState } from "react";
+//import { Route, Link } from "react-router-dom";
 
 const Card = (props) => {
   // STATES

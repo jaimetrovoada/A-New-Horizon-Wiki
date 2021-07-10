@@ -1,32 +1,26 @@
 .display-wrapper {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(15.63rem, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(15.63rem, 1fr));
-  grid-gap: 2rem;
-  /* margin-top: 3.75rem; */
+  grid-template-columns: repeat(auto-fit, 15.63rem);
+  grid-gap: 5rem;
+  justify-content: center;
   padding: 1rem;
 }
 
 .display-card {
   padding: 2rem;
   height: 15rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background-color: #eee6ce;
   border-radius: 4rem;
   border: 3px solid #eee6ce;
+  box-shadow: 0px 61px 110px -52px rgba(0, 0, 0, 0.6);
+}
+
+Copy Text .display-card:hover {
+  transform: scale(1.1);
 }
 
 .display-card-image {
@@ -35,9 +29,7 @@
 }
 
 .display-card-name {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
   color: #756852;
 }
 
@@ -47,19 +39,10 @@
 }
 
 .form-wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 1rem;
 }
@@ -67,16 +50,9 @@
 .form-input-group {
   font-size: 2rem;
   border: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
   gap: 1.5rem;
 }
 
@@ -103,18 +79,6 @@
   padding: 0.5rem;
   border: 1px solid #56bdac;
   border-radius: 1rem;
-}
-
-.form-input-group-search::-webkit-input-placeholder {
-  color: #ccc;
-}
-
-.form-input-group-search:-ms-input-placeholder {
-  color: #ccc;
-}
-
-.form-input-group-search::-ms-input-placeholder {
-  color: #ccc;
 }
 
 .form-input-group-search::placeholder {
@@ -158,48 +122,33 @@
 
 .modal-header {
   color: #8a9f93;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+  flex-direction: column-reverse;
   border-bottom: 0;
   padding: 0.5rem 2rem;
 }
 
 .modal-header .modal-title {
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 .modal-body {
   background-color: #e1efcc;
-  background: url("./images/ac-new-horizons-leaf-pattern-v2-1280x1024-1.jpg") no-repeat center center fixed;
+  background: url("./images/ac-new-horizons-leaf-pattern-v2-1280x1024-1.jpg")
+    no-repeat center center fixed;
   background-size: cover;
   border-radius: 0 0 3rem 3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
   padding: 1rem 2rem;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .modal-body figure {
   background-color: #f5f3e6;
   padding: 0.5rem;
   border-radius: 2rem;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  align-self: center;
 }
 
 .modal-body p {
@@ -214,8 +163,7 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 figure {
@@ -259,11 +207,11 @@ body {
 
 .App .wlcmScreen {
   height: 100vh;
-  display: -ms-grid;
   display: grid;
   text-align: center;
   place-items: center;
-  background: url("./images/newhorizons_wallpaper_PromoArt.png") no-repeat center center fixed;
+  background: url("./images/newhorizons_wallpaper_PromoArt.png") no-repeat
+    center center fixed;
   background-size: cover;
   color: #756852;
   font-size: 3rem;
@@ -282,3 +230,4 @@ body {
   border: 3px solid #46e4d7;
 }
 /*# sourceMappingURL=index.css.map */
+

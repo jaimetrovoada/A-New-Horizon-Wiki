@@ -1,9 +1,12 @@
 import React from "react";
-import { useState } from "react";
 
-const Form = ({ getCategory, setCategory, filter, data }) => {
-  const [newSearch, setNewSearch] = useState("");
-
+const Form = ({
+  getCategory,
+  setCategory,
+  newSearch,
+  setNewSearch,
+}) => {
+ 
   //functions
   const getNewCategory = (e) => {
     console.log(e.target.value);
@@ -11,20 +14,14 @@ const Form = ({ getCategory, setCategory, filter, data }) => {
     getCategory(e.target.value);
   };
 
-  const handleInput = (e) => {
+const handleSearch = (e) => {
     console.log(e.target.value);
     setNewSearch(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    filter(data, newSearch);
-    console.log(filter(data, newSearch));
-  };
-
   return (
     <section className="form">
-      <form onSubmit={handleSubmit} className="form-wrapper">
+      <form className="form-wrapper" autoComplete="off">
         <fieldset className="form-input-group">
           <label htmlFor="category">Category</label>
           <select
@@ -48,13 +45,12 @@ const Form = ({ getCategory, setCategory, filter, data }) => {
         <fieldset className="form-input-group">
           <input
             type="text"
-            placeholder="Filter"
+            placeholder="Search..."
             id="search"
             className="form-input-group-search"
-            onChange={handleInput}
+            onChange={handleSearch}
             value={newSearch}
           ></input>
-          <input type="submit" value="Search" className="btn"></input>
         </fieldset>
         <div className="info">
           <span>Click on the icons to see more information</span>

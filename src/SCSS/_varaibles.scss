@@ -1,24 +1,8 @@
-// Add Variables
-$bg-color: (
-  "even": #fffffe,
-  "odd": #eff0f3,
-);
-$text-color: (
-  "primary": #2a2a2a,
-  "secondary": #ccc,
-);
-
-$accent-color: #ff8e3c;
-
-@function bg-color($bgColor) {
-  @return map-get($bg-color, $bgColor);
-}
-
 @mixin gridContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.63rem, 1fr));
-  grid-gap: 2rem;
-  /* margin-top: 3.75rem; */
+  grid-template-columns: repeat(auto-fit, 15.63rem);
+  grid-gap: 5rem;
+  justify-content: center;
 }
 
 @mixin flexContainer {
@@ -27,15 +11,4 @@ $accent-color: #ff8e3c;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-@mixin neumorphism {
-  border-radius: 0px;
-  background: #eff0f3;
-  box-shadow: -18px -18px 24px #c6c7ca, 18px 18px 24px #ffffff;
-}
-@mixin neumorphism2 {
-  border-radius: 0px;
-  background: linear-gradient(315deg, #ffffff, #d7d8db);
-  box-shadow: -5px -5px 10px #bfc0c2, 5px 5px 10px #ffffff;
 }

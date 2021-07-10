@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Link } from "react-router-dom";
 import axios from "axios";
 import Form from "./components/Form";
 import Card from "./components/Card";
-import React from "react";
 
 function App() {
   // DECLARE STATES
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [category, setCategory] = useState("villagers");
   const [isLoading, setLoading] = useState(false);
+  const [newSearch, setNewSearch] = useState("");
 
   // FUNCTIONS
   useEffect(() => {
@@ -28,10 +28,11 @@ function App() {
       .get(`https://acnhapi.com/v1/${param}`)
       .then(setLoading(true))
       .then((res) => {
-        console.log({ res });
+        console.log({
+          res,
+        });
 
         setData(Object.keys(res.data).map((key) => res.data[key]));
-        //setData(Object.keys(res.data).map((key) => res.data[key]));
         console.log("promise getInfo fullfiled");
         setLoading(false);
       });
@@ -50,173 +51,158 @@ function App() {
       ? "image_uri"
       : "icon_uri";
 
-  // let results = data && data.map((info) => info);
-
-  const filterArr = (arr, query) => {
-    return setData(
-      arr.filter((el) => {
+  /*const filterArr = (arr, query) => { return arr.filter((el) => {
         return (
           el.name["name-USen"].toLowerCase().indexOf(query.toLowerCase()) !== -1
         );
       })
-    );
-  };
+  };*/
 
   // logging
   console.log({ data });
   console.log({ isLoading });
-  // console.log({ results });
 
   return (
     <div className="App">
       <Route path="/" exact>
         <section className="wlcmScreen">
           <div className="container">
-            <div>Welcome to ACNH-pedia</div>
+            <div> Welcome to ACNH - pedia </div>
             <div>
               <Link to="/explore">
-                <button className="btn">Explore</button>
+                <button className="btn"> Explore </button>
               </Link>
             </div>
           </div>
         </section>
       </Route>
-
       <Route path="/explore">
         <section>
           <Form
             getCategory={getCategory}
             setCategory={setCategory}
-            filter={filterArr}
-            data={data}
+            newSearch={newSearch}
+            setNewSearch={setNewSearch}
           />
-
-          <section className="display">
-            <div className="display-wrapper">
-              {/* if villager */}
-              {!isLoading &&
-                data &&
-                isVillager &&
-                data.map((result) => (
+        </section>
+        <section className="display">
+          <div className="display-wrapper">
+            {/* if villager */}
+            {!isLoading &&
+              data &&
+              isVillager &&
+              data
+                .filter((villager) => {
+                  return (
+                    villager.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((villager) => (
                   <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
+                    key={villager.id}
+                    name={villager.name["name-USen"]}
+                    image={villager[imageToShow()]}
                     category={category}
-                    personality={result.personality}
-                    birthday={result.birthday}
-                    species={result.species}
-                    gender={result.gender}
-                    catch_phrase={result["catch-phrase"]}
+                    personality={villager.personality}
+                    birthday={villager.birthday}
+                    species={villager.species}
+                    gender={villager.gender}
+                    catch_phrase={villager["catch-phrase"]}
                   />
                 ))}
-
-              {/* if fish */}
-              {!isLoading &&
-                data &&
-                isFish &&
-                data.map((result) => (
+           
+            {/* if fish */}
+            {!isLoading &&
+              data &&
+              isFish &&
+              data
+                .filter((fish) => {
+                  return (
+                    fish.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((fish) => (
                   <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
+                    key={fish.id}
+                    name={fish.name["name-USen"]}
+                    image={fish[imageToShow()]}
                     category={category}
-                    location={result.availability.location}
-                    price={result.price}
-                    rarity={result.availability.rarity}
-                    month_north={result.availability["month-northern"]}
-                    month_south={result.availability["month-southern"]}
-                    catch_phrase={result["catch-phrase"]}
+                    location={fish.availability.location}
+                    price={fish.price}
+                    rarity={fish.availability.rarity}
+                    month_north={fish.availability["month-northern"]}
+                    month_south={fish.availability["month-southern"]}
+                    catch_phrase={fish["catch-phrase"]}
                   />
                 ))}
-
-              {/* if sea creature */}
-              {!isLoading &&
-                data &&
-                isSea &&
-                data.map((result) => (
-                  <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
-                    category={category}
-                    price={result.price}
-                    speed={result.speed}
-                    month_north={result.availability["month-northern"]}
-                    month_south={result.availability["month-southern"]}
-                    time={result.availability.time}
-                    catch_phrase={result["catch-phrase"]}
-                  />
-                ))}
-
-              {/* if bug */}
-              {!isLoading &&
-                data &&
-                isBugs &&
-                data.map((result) => (
-                  <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
-                    category={category}
-                    price={result.price}
-                    month_north={result.availability["month-northern"]}
-                    month_south={result.availability["month-southern"]}
-                    time={result.availability.time}
-                    rarity={result.availability.rarity}
-                    catch_phrase={result["catch-phrase"]}
-                  />
-                ))}
-
-              {/* if fossil */}
-              {!isLoading &&
-                data &&
-                isFossils &&
-                data.map((result) => (
-                  <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
-                    category={category}
-                    price={result.price}
-                    museum_phrase={result["museum-phrase"]}
-                  />
-                ))}
-
-              {/* if houseware */}
-              {!isLoading &&
-                data &&
-                isHouseware &&
-                data.map((result) =>
-                  result.map((key) => (
+            {/* if houseware */}
+            {!isLoading &&
+              data &&
+              isHouseware &&
+              data
+                .filter((houseware) => {
+                  return (
+                    houseware.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((result) =>
+                  result.map((houseware) => (
                     <Card
-                      name={key.name["name-USen"]}
-                      image={key[imageToShow()]}
+                      name={houseware.name["name-USen"]}
+                      image={houseware[imageToShow()]}
                       category={category}
-                      price={key["buy-price"]}
-                      size={key.size}
-                      source={key["source-detail"]}
-                      tag={key.tag}
+                      price={houseware["buy-price"]}
+                      size={houseware.size}
+                      source={houseware["source-detail"]}
+                      tag={houseware.tag}
                     />
                   ))
                 )}
-
-              {/* if art */}
-              {!isLoading &&
-                data &&
-                isArt &&
-                data.map((result) => (
+            {/* if art */}
+            {!isLoading &&
+              data &&
+              isArt &&
+              data
+                .filter((art) => {
+                  return (
+                    art.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((art) => (
                   <Card
-                    key={result.id}
-                    name={result.name["name-USen"]}
-                    image={result[imageToShow()]}
+                    key={art.id}
+                    name={art.name["name-USen"]}
+                    image={art[imageToShow()]}
                     category={category}
-                    price={result.price}
-                    description={result["museum-desc"]}
+                    price={art.price}
+                    description={art["museum-desc"]}
                   />
                 ))}
-            </div>
-          </section>
+            {/* if fossils*/}
+    {!isLoading && data && isFossils && data.filter((fossils) => {
+                  return (
+                  fossils.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((fossils) => (
+                  <Card
+                    key={fossils.id}
+                    name={fossils.name["name-USen"]}
+                    image={fossils[imageToShow()]}
+                    category={category}
+                    price={fossils.price}
+                    description={fossils["museum-desc"]}/>))}
+          </div>
         </section>
       </Route>
     </div>

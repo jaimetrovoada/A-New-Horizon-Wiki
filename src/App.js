@@ -10,6 +10,7 @@ function App() {
   const [category, setCategory] = useState("villagers");
   const [isLoading, setLoading] = useState(false);
   const [newSearch, setNewSearch] = useState("");
+  // const [housewareItems, setHousewareItems] = useState()
 
   // FUNCTIONS
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
       .then(setLoading(true))
       .then((res) => {
         console.log("promise fullfiled");
+        console.log("resdata", res.data);
         setData(Object.keys(res.data).map((key) => res.data[key]));
         setLoading(false);
       });
@@ -28,12 +30,9 @@ function App() {
       .get(`https://acnhapi.com/v1/${param}`)
       .then(setLoading(true))
       .then((res) => {
-        console.log({
-          res,
-        });
-
+        console.log(`promise get ${category} fullfiled`);
+        console.log("resdata", res.data);
         setData(Object.keys(res.data).map((key) => res.data[key]));
-        console.log("promise getInfo fullfiled");
         setLoading(false);
       });
   };
@@ -51,12 +50,8 @@ function App() {
       ? "image_uri"
       : "icon_uri";
 
-  /*const filterArr = (arr, query) => { return arr.filter((el) => {
-        return (
-          el.name["name-USen"].toLowerCase().indexOf(query.toLowerCase()) !== -1
-        );
-      })
-  };*/
+  const housewareItems = data && isHouseware && data.map((item) => item[0]);
+  console.log({ housewareItems });
 
   // logging
   console.log({ data });
@@ -112,7 +107,6 @@ function App() {
                     catch_phrase={villager["catch-phrase"]}
                   />
                 ))}
-           
             {/* if fish */}
             {!isLoading &&
               data &&
@@ -139,6 +133,7 @@ function App() {
                     catch_phrase={fish["catch-phrase"]}
                   />
                 ))}
+
             {/* if houseware */}
             {!isLoading &&
               data &&
@@ -146,24 +141,24 @@ function App() {
               data
                 .filter((houseware) => {
                   return (
-                    houseware.name["name-USen"]
+                    houseware[0].name["name-USen"]
                       .toLowerCase()
                       .indexOf(newSearch.toLowerCase()) !== -1
                   );
                 })
-                .map((result) =>
-                  result.map((houseware) => (
-                    <Card
-                      name={houseware.name["name-USen"]}
-                      image={houseware[imageToShow()]}
-                      category={category}
-                      price={houseware["buy-price"]}
-                      size={houseware.size}
-                      source={houseware["source-detail"]}
-                      tag={houseware.tag}
-                    />
-                  ))
-                )}
+                .map((houseware, index) => (
+                  <Card
+                    key={index + 1}
+                    name={houseware[0].name["name-USen"]}
+                    image={houseware[0][imageToShow()]}
+                    category={category}
+                    price={houseware[0]["buy-price"]}
+                    size={houseware[0].size}
+                    source={houseware[0]["source-detail"]}
+                    tag={houseware[0].tag}
+                  />
+                ))}
+
             {/* if art */}
             {!isLoading &&
               data &&
@@ -182,14 +177,18 @@ function App() {
                     name={art.name["name-USen"]}
                     image={art[imageToShow()]}
                     category={category}
-                    price={art.price}
+                    price={art["buy-price"]}
                     description={art["museum-desc"]}
                   />
                 ))}
             {/* if fossils*/}
-    {!isLoading && data && isFossils && data.filter((fossils) => {
+            {!isLoading &&
+              data &&
+              isFossils &&
+              data
+                .filter((fossils) => {
                   return (
-                  fossils.name["name-USen"]
+                    fossils.name["name-USen"]
                       .toLowerCase()
                       .indexOf(newSearch.toLowerCase()) !== -1
                   );
@@ -201,7 +200,60 @@ function App() {
                     image={fossils[imageToShow()]}
                     category={category}
                     price={fossils.price}
-                    description={fossils["museum-desc"]}/>))}
+                    museum_phrase={fossils["museum-phrase"]}
+                  />
+                ))}
+
+            {/*if sea creture*/}
+            {!isLoading &&
+              data &&
+              isSea &&
+              data
+                .filter((sea) => {
+                  return (
+                    sea.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((sea) => (
+                  <Card
+                    key={sea.id}
+                    name={sea.name["name-USen"]}
+                    image={sea[imageToShow()]}
+                    category={category}
+                    price={sea.price}
+                    speed={sea.speed}
+                    month_south={sea.availability["month-southern"]}
+                    month_north={sea.availability["month-northern"]}
+                    catch_phrase={sea["catch-phrase"]}
+                  />
+                ))}
+            {/* is bugs*/}
+            {!isLoading &&
+              data &&
+              isBugs &&
+              data
+                .filter((bugs) => {
+                  return (
+                    bugs.name["name-USen"]
+                      .toLowerCase()
+                      .indexOf(newSearch.toLowerCase()) !== -1
+                  );
+                })
+                .map((bugs) => (
+                  <Card
+                    key={bugs.id}
+                    name={bugs.name["name-USen"]}
+                    image={bugs[imageToShow()]}
+                    category={category}
+                    price={bugs.price}
+                    rarity={bugs.availability.rarity}
+                    month_south={bugs.availability["month-southern"]}
+                    month_north={bugs.availability["month-northern"]}
+                    catch_phrase={bugs["catch-phrase"]}
+                  />
+                ))}
           </div>
         </section>
       </Route>

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import InfoModal from "./InfoModal";
-import { useState } from "react";
 //import { Route, Link } from "react-router-dom";
 
 const Card = (props) => {
@@ -8,11 +7,10 @@ const Card = (props) => {
   const [show, setShow] = useState(false);
 
   // FUNCTION
-
   const handleClick = (e) => {
     setShow(true);
   };
-  //console.log({ props });
+
   return (
     <>
       <div className="display-card" onClick={handleClick}>

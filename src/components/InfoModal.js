@@ -10,25 +10,25 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>birthday: </strong>
+          <strong>Birthday: </strong>
           {props.birthday}
         </p>
         <p>
-          <strong>gender: </strong>
+          <strong>Gender: </strong>
           {props.gender}
         </p>
         <p>
-          <strong>species: </strong>
+          <strong>Species: </strong>
           {props.species}
         </p>
         <p>
-          <strong>personality: </strong>
+          <strong>Personality: </strong>
           {props.personality}
         </p>
         <p>
-          <strong>catch phrase: </strong>
+          <strong>Catch Phrase: </strong>
           {props.catch_phrase}
         </p>
       </div>
@@ -40,17 +40,17 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>location: </strong>
+          <strong>Location: </strong>
           {props.location}
         </p>
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>rarity: </strong>
+          <strong>Rarity: </strong>
           {props.rarity}
         </p>
         <p>
@@ -59,7 +59,7 @@ const InfoModal = (props) => {
           {props.month_south} for the south hemisphere
         </p>
         <p>
-          <strong>catch phrase: </strong>
+          <strong>Catch Phrase: </strong>
           {props.catch_phrase}
         </p>
       </div>
@@ -71,13 +71,13 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>speed: </strong>
+          <strong>Speed: </strong>
           {props.speed}
         </p>
         <p>
@@ -86,7 +86,7 @@ const InfoModal = (props) => {
           {props.month_south} for the south hemisphere at {props.time}
         </p>
         <p>
-          <strong>catch phrase: </strong>
+          <strong>Catch Phrase: </strong>
           {props.catch_phrase}
         </p>
       </div>
@@ -98,13 +98,13 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>rarity: </strong>
+          <strong>Rarity: </strong>
           {props.rarity}
         </p>
         <p>
@@ -113,7 +113,7 @@ const InfoModal = (props) => {
           {props.month_south} for the south hemisphere at {props.time}
         </p>
         <p>
-          <strong>catch phrase: </strong>
+          <strong>Catch Phrase: </strong>
           {props.catch_phrase}
         </p>
       </div>
@@ -125,13 +125,13 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>museum phrase: </strong>
+          <strong>Description: </strong>
           {props.museum_phrase}
         </p>
       </div>
@@ -143,17 +143,17 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>size: </strong>
+          <strong>Size: </strong>
           {props.size}
         </p>
         <p>
-          <strong>how to get: </strong>
+          <strong>How to get: </strong>
           {props.source}
         </p>
         <p>
@@ -169,13 +169,13 @@ const InfoModal = (props) => {
       <figure>
         <img src={props.image} alt={`${props.name}`} />
       </figure>
-      <div className="villager-info">
+      <div className="modal-info">
         <p>
-          <strong>price: </strong>
+          <strong>Price: </strong>
           {props.price}
         </p>
         <p>
-          <strong>description: </strong>
+          <strong>Description: </strong>
           {props.description}
         </p>
       </div>

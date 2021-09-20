@@ -62,7 +62,7 @@ function App() {
       <Route path="/" exact>
         <section className="wlcmScreen">
           <div className="container">
-            <div> Welcome to ACNH - pedia </div>
+            <div> Welcome to New Horizons Wiki </div>
             <div>
               <Link to="/explore">
                 <button className="btn"> Explore </button>
